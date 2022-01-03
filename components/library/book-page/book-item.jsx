@@ -19,11 +19,12 @@ const BookRenderItem = ({ book }) => {
             <div className='card_product m-3'>
                 <div className='row'>
                     <div className='col-4'>
-                        <Image
-                            src='/images/banner.jpg'
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={book.image}
                             alt='book'
-                            width='200px'
-                            height='220px'
+                            width='150px'
+                            height='170px'
                             className='m-1'
                         />
                     </div>

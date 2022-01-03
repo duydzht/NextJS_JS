@@ -28,6 +28,18 @@ const BookMenu = () => {
                             Add new book
                         </a>
                     </Link>
+                    <Link href='/library/registered'>
+                        <a className='link'>
+                            <i className='fa fa-check col-3'></i>
+                            Book Registered
+                        </a>
+                    </Link>
+                    <Link href='/library/borrowed'>
+                        <a className='link'>
+                            <i className='fa fa-check-square col-3'></i>
+                            Book Borrowed
+                        </a>
+                    </Link>
                     <button
                         onClick={() => {
                             logout();

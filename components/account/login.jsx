@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import { apiAcc } from '../../apiConnect/api';
 
 const Login = () => {
-
-    const router = useRouter()
+    const router = useRouter();
     const [user, setUser] = useState({ username: '', password: '' });
-
 
     const loginHandler = (acc) => {
         acc.preventDefault();
@@ -14,12 +12,13 @@ const Login = () => {
         apiAcc
             .post('/accounts/login', user)
             .then((res) => {
-                localStorage.setItem('isLoggedIn', res.data.jwt);
+                if (typeof window !== 'undefined') {
+                    window.localStorage.setItem('isLoggedIn', res.data.jwt);
+                }
                 router.replace('/library');
             })
             .catch((err) => console.log(err));
     };
-
 
     return (
         <div>

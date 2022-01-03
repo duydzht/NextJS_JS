@@ -120,6 +120,7 @@ div.topLeftBorders a:hover:after {
 
 .link {
     font-weight: bold;
+    /* margin-top: 20px; */
 }
 
 .link:hover {
@@ -134,4 +135,9 @@ div.topLeftBorders a:hover:after {
     color: #f44336;
     background: none;
     border: none;
+}
+
+.card__regis {
+    background: rgba(114, 116, 100, 0.651);
+    border-radius: 15px;
 }

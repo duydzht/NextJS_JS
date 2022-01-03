@@ -42,18 +42,52 @@ const BookDetail = (props) => {
             })
             .catch((err) => console.log(err));
     };
+
+    //====REGISTER
+    const registerBook = (id) => {
+        console.log([id]);
+        const request = {
+            bookId: [id],
+            username: 'testacc',
+        };
+        apiLib
+            .post('/ext/book/registerbook', request, {
+                headers: {
+                    authorization: token,
+                },
+            })
+            .then((res) => {
+                alert('Register book successfully');
+            })
+            .catch((err) => {
+                console.log(err);
+                alert('Register Failed' + err.status);
+            });
+    };
     if (book) {
         return (
             <div>
                 <div className='card__detail row'>
                     <div className='col-12 col-md-4'>
-                        <Image
-                            src='/images/banner.jpg'
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={book.image}
                             alt='book'
                             width='200px'
                             height='220px'
                             className='m-1'
                         />
+                        <p>
+                            Đánh giá:{' '}
+                            <i className='fa fa-star' aria-hidden='true'></i>
+                            <i className='fa fa-star' aria-hidden='true'></i>
+                            <i className='fa fa-star' aria-hidden='true'></i>
+                            <i className='fa fa-star' aria-hidden='true'></i>
+                            <i
+                                className='fa fa-star-half-o'
+                                aria-hidden='true'
+                            ></i>
+                        </p>
                     </div>
                     <div className='col-12 col-md-8'>
                         <h3>{book.name}</h3>
@@ -78,6 +112,10 @@ const BookDetail = (props) => {
                             </div>
                         </div>
                         <hr />
+                        <div>
+                            <h4>{book.description}</h4>
+                        </div>
+                        <hr />
                         <button
                             className='btn btn-success'
                             onClick={() => handleClick()}
@@ -89,6 +127,12 @@ const BookDetail = (props) => {
                             onClick={() => deleteBook(book.id)}
                         >
                             Delete
+                        </button>
+                        <button
+                            className='btn btn-warning'
+                            onClick={() => registerBook(book.id)}
+                        >
+                            Register borrow
                         </button>
                     </div>
                 </div>
